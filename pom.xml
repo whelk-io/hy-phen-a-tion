@@ -30,7 +30,7 @@
 	</developers>
 
 	<scm>
-		<url>https://github.com/whelk-io/hy-phen-a-tion</url>
+		<url>https://github.com/whelk-io/hy-phen-a-tion.git</url>
 	</scm>
 
 	<properties>
