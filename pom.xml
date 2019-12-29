@@ -30,7 +30,7 @@
 	</developers>
 
 	<scm>
-		<url>https://github.com/whelk-io/hy-phen-a-tion.git</url>
+		<url>https://github.com/whelk-io/hy-phen-a-tion</url>
 	</scm>
 
 	<properties>
@@ -61,8 +61,8 @@
 		<repository>
 			<id>github</id>
 			<name>GitHub OWNER Apache Maven Packages</name>
-			<url>https://github.com/whelk-io/hy-phen-a-tion</url>
+			<url>https://maven.pkg.github.com/whelk-io/hy-phen-a-tion</url>
 		</repository>
 	</distributionManagement>
-
+	
 </project>
