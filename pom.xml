@@ -7,7 +7,7 @@
 
 	<groupId>io.whelk.hy.phen</groupId>
 	<artifactId>whelk-hy-phen-a-tion</artifactId>
-	<version>0.0.2-RELEASE</version>
+	<version>0.0.3-RELEASE</version>
 	<name>Hy-phen-a-tion</name>
 	<description>Java OSS library for calculating syllables and hyphenation using Frank Liang's doctoral thesis.</description>
 	<url>https://github.com/whelk-io/hy-phen-a-tion</url>
@@ -44,7 +44,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.10</version>
+			<version>1.18.8</version>
 			<optional>true</optional>
 		</dependency>
 
@@ -61,8 +61,8 @@
 		<repository>
 			<id>github</id>
 			<name>GitHub OWNER Apache Maven Packages</name>
-			<url>https://github.com/whelk-io/hy-phen-a-tion</url>
+			<url>https://maven.pkg.github.com/whelk-io/hy-phen-a-tion</url>
 		</repository>
 	</distributionManagement>
-
+	
 </project>
