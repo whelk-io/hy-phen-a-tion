@@ -31,7 +31,7 @@ jobs:
       run: |
         version=`cat /tmp/version.txt` &&
         curl -X POST \
-          https://api.github.com/repos/whelk-io/flesch-kincaid/releases \
+          https://api.github.com/repos/whelk-io/hy-phen-a-tion/releases \
           -H 'Authorization: Bearer ${{ secrets.BUILD_TOKEN }}' \
           -H 'Content-Type: application/json' \
           -H 'Host: api.github.com' \
