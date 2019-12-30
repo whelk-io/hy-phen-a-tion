@@ -45,7 +45,7 @@ public class HyphenatorTest {
   }
 
   @Test
-  public void test() {
+  public void testHyphen() {
     var result = Hyphenator.hyphen(wordToTest);
     assertThat(result.originalWord(), is(wordToTest));
     assertThat(result.hyphenWord(), is(expectedHyphenation));
