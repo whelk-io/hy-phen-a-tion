@@ -130,7 +130,7 @@ public class Hyphenator {
         if (trieMap.containsKey(sub)) {
           List<Trie> tries = trieMap.get(sub);
           for (Trie trie : tries) { 
-            if (trie.isLeadingMatch() && !isLeadingMatchOnly)
+            if (isLeadingMatchOnly && !trie.isLeadingMatch())
               continue;
             if (trie.isTrailingMatch() && !isTrailingMatchOnly)
               continue;
