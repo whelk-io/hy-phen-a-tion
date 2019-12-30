@@ -18,28 +18,29 @@ public class HyphenatorTest {
   private String wordToTest;
   private String expectedHyphenation;
   private String expectedTrieWord;
+  private int expectedSyllableCount;
   
   @Parameters
   public static Collection<Object[]> data() {
     return Arrays.asList(new Object[][] {
-        { "computer", "com-put-er", "co4m5pu2t3er" },
-        { "associate", "as-so-ciate", null },
-        { "associates", "as-so-ciates", null },
-        { "declination", "dec-li-na-tion", null },
-        { "obligatory", "oblig-a-tory", null },
-        { "philanthropic", "phil-an-thropic", null },
-        { "present", "present", null },
-        { "presents", "presents", null },
-        { "project", "project", null },
-        { "projects", "projects", null },
-        { "reciprocity", "reci-procity", null },
-        { "recognizance", "re-cog-ni-zance", null },
-        { "reformation", "ref-or-ma-tion", null },
-        { "retribution", "ret-ri-bu-tion", null },
-        { "table", "ta-ble", null },
+        { "computer", "com-put-er", "co4m5pu2t3er", 3 },
+        { "associate", "as-so-ciate", null, 3 },
+        { "associates", "as-so-ciates", null, 3 },
+        { "declination", "dec-li-na-tion", null, 4 },
+        { "obligatory", "oblig-a-tory", null, 3 },
+        { "philanthropic", "phil-an-thropic", null, 3 },
+        { "present", "present", null, 1 },
+        { "presents", "presents", null, 1 },
+        { "project", "project", null, 1 },
+        { "projects", "projects", null, 1 },
+        { "reciprocity", "reci-procity", null, 2 },
+        { "recognizance", "re-cog-ni-zance", null, 4 },
+        { "reformation", "ref-or-ma-tion", null, 4 },
+        { "retribution", "ret-ri-bu-tion", null, 4 },
+        { "table", "ta-ble", null, 2 },
         { "supercalifragilisticexpialidocious", 
           "su-per-cal-ifrag-ilis-tic-ex-pi-ali-do-cious", 
-          "su1per1cal1ifrag1il4is1t2ic1ex3p2i3al2i1do1c2io2u2s" }
+          "su1per1cal1ifrag1il4is1t2ic1ex3p2i3al2i1do1c2io2u2s", 11 }
     });
   }
 
@@ -49,6 +50,7 @@ public class HyphenatorTest {
     assertThat(result.originalWord(), is(wordToTest));
     assertThat(result.hyphenWord(), is(expectedHyphenation));
     assertThat(result.trieWord(), is(expectedTrieWord));
+    assertThat(result.syllables().size(), is(expectedSyllableCount));
   }
 
 }
