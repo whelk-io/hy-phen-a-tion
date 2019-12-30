@@ -60,9 +60,8 @@
 	<distributionManagement>
 		<repository>
 			<id>github</id>
-			<name>GitHub OWNER Apache Maven Packages</name>
 			<url>https://maven.pkg.github.com/whelk-io/hy-phen-a-tion</url>
 		</repository>
 	</distributionManagement>
-	
+
 </project>

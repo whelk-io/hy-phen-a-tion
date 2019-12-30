@@ -18,7 +18,7 @@ import lombok.experimental.UtilityClass;
 public class Hyphenator {
   
   private static Map<Integer, Map<String, List<Trie>>> tries;
-  private static Map<String, String> edges;
+  private static Map<String, Edge> edges;
   
   private static int maxTrie;
   private static int minTrie;
@@ -49,7 +49,8 @@ public class Hyphenator {
       edges = stream
               .sorted()
               .distinct()
-              .collect(Collectors.toMap(v -> v.replaceAll("-", ""), v -> v));
+              .map(Hyphenator::mapEdge)
+              .collect(Collectors.toMap(Edge::value, v -> v));
     }
   }
   
@@ -62,12 +63,16 @@ public class Hyphenator {
     return new Trie(value, plainText, trieArr, isLeadingMatch, isTrailingMatch);
   }
   
+  private static Edge mapEdge(String value) { 
+    return new Edge(value.replaceAll("-", ""), value, Arrays.asList(value.split("-")));
+  }
+  
   private static char[] toTrieArray(String value, String plainText, boolean isTrailingWildcard) { 
     var trimmed = value.replaceAll("\\.", "");
     var len = plainText.length();
     if (isTrailingWildcard)
       len++;
-    char[] arr = new char[len * 2];
+    var arr = new char[len * 2];
     Arrays.fill(arr, '0');
     
     int i = 0;
@@ -105,30 +110,32 @@ public class Hyphenator {
     
     // check if edge case
     if (edges.containsKey(word)) {
+      var edge = edges.get(word);
       result.isEdgeCase(true);
-      result.hyphenWord(edges.get(word));
+      result.hyphenWord(edge.hypen());
+      result.syllables(edge.syllables());
       return result;
     }
 
     // start building trie array
-    char[] wordTrieArr = new char[word.length() * 2];
+    var wordTrieArr = new char[word.length() * 2];
     Arrays.fill(wordTrieArr, '0');
-    char[] wordArr = word.toCharArray();
+    var wordArr = word.toCharArray();
     for (int i = 0; i < wordArr.length; i++)
       wordTrieArr[(i * 2) + 1] = wordArr[i];
 
     // match tries to word
     List<Trie> matchedTrie = new LinkedList<>();
     for (int i = minTrie; i <= maxTrie; i++) {
-      Map<String, List<Trie>> trieMap = tries.getOrDefault(i, new HashMap<>());
-      boolean isLeadingMatchOnly = false;
-      boolean isTrailingMatchOnly = false;
+      var trieMap = tries.getOrDefault(i, new HashMap<>());
+      var isLeadingMatchOnly = false;
+      var isTrailingMatchOnly = false;
       for (int j = 0; j <= word.length() - i; j++) {
         isLeadingMatchOnly = j == 0;
         isTrailingMatchOnly = j == word.length() - i;
         var sub = word.substring(j, j + i);
         if (trieMap.containsKey(sub)) {
-          List<Trie> tries = trieMap.get(sub);
+          var tries = trieMap.get(sub);
           for (Trie trie : tries) { 
             if (trie.isLeadingMatch() && !isLeadingMatchOnly)
               continue;
@@ -231,7 +238,7 @@ public class Hyphenator {
    * @param trie
    */
   private static void updateWordArr(char[] wordTrieArr, int index, Trie trie) {
-    char[] trieArr = trie.arr();
+    var trieArr = trie.arr();
     for (int i = 0; i < trieArr.length && i + index < wordTrieArr.length; i += 2)
       if (trieArr[i] > wordTrieArr[i + index])
         wordTrieArr[i + index] = trieArr[i];
