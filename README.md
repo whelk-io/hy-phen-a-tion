@@ -19,3 +19,25 @@ Java OSS library for calculating syllables and hyphenation using Frank Liang's d
     
   }
 ````
+
+## Maven Integration
+
+````xml
+<dependencies>
+	<dependency>
+		<groupId>io.whelk.hy.phen</groupId>
+		<artifactId>whelk-hy-phen-a-tion</artifactId>
+		<version>0.0.6-release</version>
+	</dependency>
+
+</dependencies>
+
+<repositories>
+	<repository>
+		<id>github</id>
+		<url>https://maven.pkg.github.com/whelk-io/hy-phen-a-tion</url>
+	</repository>
+</repositories>
+````
+
+More information on authenticating with GitHub packages: https://help.github.com/en/github/managing-packages-with-github-packages/configuring-apache-maven-for-use-with-github-packages#authenticating-to-github-packages
