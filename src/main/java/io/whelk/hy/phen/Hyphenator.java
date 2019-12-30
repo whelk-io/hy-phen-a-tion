@@ -130,7 +130,7 @@ public class Hyphenator {
         if (trieMap.containsKey(sub)) {
           List<Trie> tries = trieMap.get(sub);
           for (Trie trie : tries) { 
-            if (isLeadingMatchOnly && !trie.isLeadingMatch())
+            if (trie.isLeadingMatch() && !isLeadingMatchOnly)
               continue;
             if (trie.isTrailingMatch() && !isTrailingMatchOnly)
               continue;
@@ -180,7 +180,7 @@ public class Hyphenator {
    */
   private static String groupByToken(char[] wordTrieArr) { 
     return IntStream
-            .range(0, wordTrieArr.length)
+            .range(1, wordTrieArr.length)
             .mapToObj(i -> wordTrieArr[i])
             .map(c -> c.toString())
             .filter(c -> !"0".equals(c))
