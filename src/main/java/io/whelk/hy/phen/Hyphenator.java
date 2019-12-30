@@ -1,20 +1,19 @@
 package io.whelk.hy.phen;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toMap;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 import lombok.SneakyThrows;
 import lombok.var;
-import lombok.experimental.UtilityClass;
 
-@UtilityClass
 public class Hyphenator {
   
   private static Map<Integer, Map<String, List<Trie>>> tries;
@@ -23,35 +22,47 @@ public class Hyphenator {
   private static int maxTrie;
   private static int minTrie;
 
-  static {
+  static { 
     loadHyphens();
     loadEdges();
   }
   
-  @SneakyThrows
   private static void loadHyphens() {
-    try (Stream<String> stream = Files.lines(Paths.get(ClassLoader.getSystemResource("hyphen-en-us.tex").toURI()))) {
-      tries = stream
-              .sorted()
-              .distinct()
-              .map(Hyphenator::mapPattern)
-              .collect(Collectors.groupingBy(t -> t.matcher().length(), Collectors.groupingBy(t -> t.matcher())));
+      tries = Hyphenator
+                .readFromFile("/hyphen-en-us.tex")
+                .stream()
+                .sorted()
+                .distinct()
+                .map(Hyphenator::mapPattern)
+                .collect(groupingBy(t -> t.matcher().length(), groupingBy(t -> t.matcher())));
       
       var stats = tries.keySet().stream().mapToInt(i -> i).summaryStatistics();
       maxTrie = stats.getMax();
       minTrie = stats.getMin();
-    }
   }
   
   @SneakyThrows
   private static void loadEdges() {
-    try (Stream<String> stream = Files.lines(Paths.get(ClassLoader.getSystemResource("edge-en-us.tex").toURI()))) {
-      edges = stream
-              .sorted()
-              .distinct()
-              .map(Hyphenator::mapEdge)
-              .collect(Collectors.toMap(Edge::value, v -> v));
+      edges = Hyphenator
+                .readFromFile("/edge-en-us.tex")
+                .stream()
+                .sorted()
+                .distinct()
+                .map(Hyphenator::mapEdge)
+                .collect(toMap(Edge::value, v -> v));
+  }
+  
+  @SneakyThrows
+  private static List<String> readFromFile(String filename) { 
+    var lines = new LinkedList<String>();
+    try(var inputStream = Hyphenator.class.getResourceAsStream(filename);
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+      String line;
+      while ((line = br.readLine()) != null) {
+        lines.add(line);
+      }
     }
+    return lines;
   }
   
   private static Trie mapPattern(String value) {
@@ -176,7 +187,7 @@ public class Hyphenator {
   private static String hyphenWord(List<String> syllables) {
     return syllables
             .stream()
-            .collect(Collectors.joining("-"));
+            .collect(joining("-"));
   }
   
   /**
@@ -191,7 +202,7 @@ public class Hyphenator {
             .mapToObj(i -> wordTrieArr[i])
             .map(c -> c.toString())
             .filter(c -> !"0".equals(c))
-            .collect(Collectors.joining());
+            .collect(joining());
   }
   
   /**
@@ -227,7 +238,7 @@ public class Hyphenator {
             .filter(j -> j % 2 != 0)
             .mapToObj(j -> wordTrieArr[j])
             .map(c -> c.toString())
-            .collect(Collectors.joining());
+            .collect(joining());
   }
 
   /**
