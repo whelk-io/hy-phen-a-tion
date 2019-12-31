@@ -29,7 +29,7 @@ public class Hyphenator {
   
   private static void loadHyphens() {
       tries = Hyphenator
-                .readFromFile("/hyphen-en-us.tex")
+                .readFromFile("/hyphen-en-us.txt")
                 .stream()
                 .sorted()
                 .distinct()
@@ -44,7 +44,7 @@ public class Hyphenator {
   @SneakyThrows
   private static void loadEdges() {
       edges = Hyphenator
-                .readFromFile("/edge-en-us.tex")
+                .readFromFile("/edge-en-us.txt")
                 .stream()
                 .sorted()
                 .distinct()
