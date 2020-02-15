@@ -61,7 +61,7 @@ Java OSS library for calculating syllables and hyphenation using Frank Liang's d
 	<dependency>
 		<groupId>io.whelk.hy.phen</groupId>
 		<artifactId>whelk-hy-phen-a-tion</artifactId>
-		<version>0.0.14-release</version>
+		<version>${whelk-hy-phen-a-tion-version}</version>
 	</dependency>
 </dependencies>
 
