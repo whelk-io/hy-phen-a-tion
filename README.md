@@ -74,3 +74,4 @@ Java OSS library for calculating syllables and hyphenation based on Frank Liang'
 ````
 
 More information on authenticating with GitHub packages: https://help.github.com/en/github/managing-packages-with-github-packages/configuring-apache-maven-for-use-with-github-packages#authenticating-to-github-packages
+
