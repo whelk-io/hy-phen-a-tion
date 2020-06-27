@@ -42,6 +42,7 @@ jobs:
         git config --local user.email ${{ secrets.BUILD_EMAIL }}
         git config --local user.name ${{ secrets.BUILD_USERNAME }}
         [[ `git diff` ]] && git commit -m "Update version in pom.xml" -a || echo "ignore commit, no changes"
+        git pull
 
     - name: Push changes
       uses: ad-m/github-push-action@master
