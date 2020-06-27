@@ -7,7 +7,7 @@ on:
 jobs:
 
   unit-test:
-  
+    name: Unit Test
     runs-on: ubuntu-latest
 
     steps:
@@ -25,7 +25,7 @@ jobs:
       run: mvn -B test --file pom.xml
 
   increment-version:
-
+    name: Increment POM version
     runs-on: ubuntu-latest
 
     steps:
