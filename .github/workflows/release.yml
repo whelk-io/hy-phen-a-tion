@@ -45,6 +45,7 @@ jobs:
 
     - name: Commit files
       run: |
+        git checkout develop
         git config --local user.email ${{ secrets.BUILD_EMAIL }}
         git config --local user.name ${{ secrets.BUILD_USERNAME }}
         [[ `git diff` ]] && git commit -m "Update version in pom.xml" -a || echo "ignore commit, no changes"
