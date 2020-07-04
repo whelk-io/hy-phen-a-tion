@@ -15,7 +15,7 @@ jobs:
       with:
         fetch-depth: 2
 
-    - run: | 
+    - run: |
         git fetch
         git checkout develop
 
