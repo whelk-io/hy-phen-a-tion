@@ -29,6 +29,7 @@ jobs:
           git add .
           git commit -m "updated version in pom.xml"
           git push
+          git push origin $version
 
       - name: Release to Nexus Repository
         uses: samuelmeuli/action-maven-publish@v1
