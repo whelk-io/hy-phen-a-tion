@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 import lombok.SneakyThrows;
-import lombok.var;
 
 public class Hyphenator {
   

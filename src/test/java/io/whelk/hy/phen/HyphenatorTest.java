@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import lombok.AllArgsConstructor;
-import lombok.var;
 
 @RunWith(Parameterized.class)
 @AllArgsConstructor
