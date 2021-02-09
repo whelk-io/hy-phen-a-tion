@@ -13,12 +13,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v1
 
-      - name: Install Java and Maven
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11
+      - name: Increment Version
+        run: ./mvnw build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion} versions:commit
 
-      - name: Release Maven package
+      - name: Commit Version Change
+        uses: stefanzweifel/git-auto-commit-action@v4
+
+      - name: Release to Nexus Repository
         uses: samuelmeuli/action-maven-publish@v1
         with:
           gpg_private_key: ${{ secrets.GPG_SIGNING_KEY }}
