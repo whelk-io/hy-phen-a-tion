@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.whelk.hy.phen</groupId>
 	<artifactId>whelk-hy-phen-a-tion</artifactId>
-	<version>0.1.03-SNAPSHOT</version>
+	<version>0.1.03</version>
 	<packaging>jar</packaging>
 	<name>Hy-phen-a-tion</name>
 	<description>Java OSS library for calculating syllables and hyphenation using Frank Liang's doctoral thesis.</description>
@@ -33,7 +31,8 @@
 	<scm>
 		<url>https://github.com/whelk-io/hy-phen-a-tion.git</url>
         <connection>scm:git:https://github.com/whelk-io/hy-phen-a-tion.git</connection>
-	</scm>
+	  <tag>whelk-hy-phen-a-tion-0.1.03</tag>
+  </scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
