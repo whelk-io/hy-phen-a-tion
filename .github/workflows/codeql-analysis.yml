@@ -60,7 +60,7 @@ jobs:
         java-version: 1.11
 
     - name: Build Jar
-      run: ./mvnw -B package --file pom.xml
+      run: ./mvnw -B clean compile --file pom.xml
 
     #- run: |
     #   make bootstrap
