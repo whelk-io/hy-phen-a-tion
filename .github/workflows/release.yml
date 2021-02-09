@@ -13,10 +13,19 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v1
 
+    - name: Setup Maven Settings
+      uses: whelk-io/maven-settings-xml-action@v14
+      with:
+        repositories: '[{ "id": "ossrh", "url": "https://oss.sonatype.org/service/local/staging/deploy/maven2/", "releases": { "enabled": "true" }, "snapshots": { "enabled": "true" } }]'
+        servers: '[{ "id": "ossrh", "username": "${{ secrets.OSSRH_USERNAME }}", "password": "${{ secrets.OSSRH_PASSWORD }}" }]'
+
       - name: Install Java and Maven
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
+      - name: Perform Release
+        run: ./mvnw -B --settings ~/.m2/settings.xml release:prepare release:perform
 
       - name: Release Maven package
         uses: samuelmeuli/action-maven-publish@v1
