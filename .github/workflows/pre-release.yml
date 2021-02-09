@@ -20,5 +20,8 @@ jobs:
         with:
           java-version: 11
 
-      - name: Prepare Release
-        run: ./mvnw -B clean package
+      - name: Build
+        run: ./mvnw -B clean package -DskipTests
+
+      - name: Run Unit Tests
+        run: ./mvnw -B test
