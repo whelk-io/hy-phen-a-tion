@@ -64,7 +64,7 @@ jobs:
     #   make release
 
     - name: Build jar
-    run: ./mvnw -B package
+      run: ./mvnw -B package
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
