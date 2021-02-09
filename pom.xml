@@ -7,7 +7,7 @@
 
 	<groupId>io.whelk.hy.phen</groupId>
 	<artifactId>whelk-hy-phen-a-tion</artifactId>
-	<version>0.0.21-RELEASE</version>
+	<version>0.1.01-RELEASE</version>
 	<name>Hy-phen-a-tion</name>
 	<description>Java OSS library for calculating syllables and hyphenation using Frank Liang's doctoral thesis.</description>
 	<url>https://github.com/whelk-io/hy-phen-a-tion</url>
@@ -35,8 +35,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 
 	<dependencies>
