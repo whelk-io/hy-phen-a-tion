@@ -30,7 +30,7 @@ public static void main(String...args) {
 ````xml
 <dependency>
   <groupId>io.whelk.hy.phen</groupId>
-  <artifactId>hy-phen-a-tion</artifactId>
+  <artifactId>whelk-hy-phen-a-tion</artifactId>
   <version>${hy-phen-a-tion-version}</version>
 </dependency>
 ````
