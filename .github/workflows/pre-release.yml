@@ -13,10 +13,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v1
 
-      - name: Set up JDK 1.8
+      - name: Set up Java
         uses: actions/setup-java@v1.4.3
         with:
-          java-version: 1.8
+          java-version: 1.11
 
       - name: Run Unit Tests
         run: ./mvnw -B test
