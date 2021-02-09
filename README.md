@@ -20,6 +20,11 @@ public static void main(String...args) {
 }
 ````
 
+## System Requirements
+
+* Java 11
+
+
 ## Maven Integration
 
 ````xml
