@@ -17,7 +17,7 @@ jobs:
         run: ./mvnw build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion} versions:commit
 
       - name: Commit Version Change
-        uses: stefanzweifel/git-auto-commit-action@v4.8
+        uses: stefanzweifel/git-auto-commit-action@v4.8.0
         with:
           branch: main
           commit_message: automatic version increment
