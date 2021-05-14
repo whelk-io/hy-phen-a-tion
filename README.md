@@ -27,6 +27,8 @@ public static void main(String...args) {
 
 ## Maven Integration
 
+[Maven Central](https://search.maven.org/artifact/io.whelk.hy.phen/whelk-hy-phen-a-tion)
+
 ````xml
 <dependency>
   <groupId>io.whelk.hy.phen</groupId>
